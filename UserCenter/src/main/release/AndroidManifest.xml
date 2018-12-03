@@ -3,7 +3,7 @@
     package="com.solin.user">
 
     <application>
-        <activity android:name=".ui.activity.RegisterActivity"/>
+        <activity android:name=".ui.activity.RegisterActivity" />
     </application>
 
 </manifest>
