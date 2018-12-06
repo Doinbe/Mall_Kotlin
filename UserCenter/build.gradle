@@ -5,6 +5,7 @@ if (isUserModule.toBoolean()) {
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -56,6 +57,11 @@ dependencies {
     //RxKotlin and RxAndroid
     implementation "io.reactivex:rxkotlin:$rxkotlin_version"
     implementation "io.reactivex:rxandroid:$rxandroid_version"
+    //Retrofit2
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    //Dagger2
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
 
 }

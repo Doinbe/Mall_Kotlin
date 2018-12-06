@@ -1,7 +1,8 @@
 package com.solin.user.service
 
+import okhttp3.RequestBody
 import rx.Observable
 
 interface UserService {
-    fun register(name: String,pwd: String): Observable<Boolean>
+    fun register(request: RequestBody): Observable<Boolean>
 }

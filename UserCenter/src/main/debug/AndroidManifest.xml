@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.solin.user">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:name="com.solin.base.comom.BaseApplication"
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
