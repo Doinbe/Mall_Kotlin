@@ -3,18 +3,19 @@ package com.solin.base.ext
 import com.google.gson.Gson
 import com.solin.base.data.protocol.BaseRequest
 import com.solin.base.rx.BaseSubscriber
+import com.trello.rxlifecycle.LifecycleProvider
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import rx.Observable
-import rx.Subscriber
 
 /**
  * Observable 扩展方法
  */
 
-fun <T> Observable<T>.execute(subscriber: BaseSubscriber<T>){
+fun <T> Observable<T>.execute(subscriber: BaseSubscriber<T>,lifecycleProvider: LifecycleProvider<*>){
     this.subscribeOn(rx.schedulers.Schedulers.io())
             .observeOn(rx.android.schedulers.AndroidSchedulers.mainThread())
+            .compose(lifecycleProvider.bindToLifecycle())
             .subscribe(subscriber)
 }
 

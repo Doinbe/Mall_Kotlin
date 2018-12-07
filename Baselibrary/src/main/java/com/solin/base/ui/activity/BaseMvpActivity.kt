@@ -5,6 +5,7 @@ import com.solin.base.comom.BaseApplication
 import com.solin.base.injection.component.ActivityComponent
 import com.solin.base.injection.component.DaggerActivityComponent
 import com.solin.base.injection.module.ActivityModule
+import com.solin.base.injection.module.LifecycleProviderModule
 import com.solin.base.presenter.BasePresenter
 import com.solin.base.presenter.view.BaseView
 import org.jetbrains.anko.toast
@@ -36,6 +37,7 @@ open class BaseMvpActivity<T: BasePresenter<*>>: BaseActivity(),BaseView{
         activityComponent = DaggerActivityComponent.builder()
                 .appComponent((application as BaseApplication).appComponent)
                 .activityModule(ActivityModule(this))
+                .lifecycleProviderModule(LifecycleProviderModule(this))
                 .build()
     }
 

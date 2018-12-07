@@ -29,7 +29,7 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
                         super.onError(e)
                         if (e is BaseException) mView.onError(e.msg)
                     }
-                })
+                },ifecycleProvider)
 
     }
 }
