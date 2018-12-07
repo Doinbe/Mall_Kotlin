@@ -1,4 +1,4 @@
-package com.solin.base.ui.activity
+package com.solin.base.ui.fragment
 
 import android.os.Bundle
 import com.solin.base.comom.BaseApplication
@@ -11,8 +11,8 @@ import com.solin.base.presenter.view.BaseView
 import org.jetbrains.anko.toast
 import javax.inject.Inject
 
-abstract class BaseMvpActivity<T: BasePresenter<*>>: BaseActivity(),BaseView{
-    override fun showLoading() {
+abstract class BaseMvpFragment<T: BasePresenter<*>>: BaseFragment(),BaseView{
+     override fun showLoading() {
 
     }
 
@@ -21,7 +21,7 @@ abstract class BaseMvpActivity<T: BasePresenter<*>>: BaseActivity(),BaseView{
     }
 
     override fun onError(error: String) {
-        toast(error)
+        activity?.toast(error)
     }
     @Inject
     lateinit var mPresenter: T
@@ -37,8 +37,8 @@ abstract class BaseMvpActivity<T: BasePresenter<*>>: BaseActivity(),BaseView{
 
     private fun initActivityInjection() {
         activityComponent = DaggerActivityComponent.builder()
-                .appComponent((application as BaseApplication).appComponent)
-                .activityModule(ActivityModule(this))
+                .appComponent((activity?.application as BaseApplication).appComponent)
+                .activityModule(ActivityModule(this!!.activity!!))
                 .lifecycleProviderModule(LifecycleProviderModule(this))
                 .build()
     }
